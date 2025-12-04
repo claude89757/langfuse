@@ -51,12 +51,14 @@ export const stringDateTime = z.string().datetime({ offset: true });
 export const views = z.enum([
   "traces",
   "observations",
-  "events-observations", // Events table observations (V2 API)
   "scores-numeric",
   "scores-categorical",
   // "sessions",
   // "users",
 ]);
+
+export const viewVersions = z.enum(["v1", "v2"]);
+export type ViewVersion = z.infer<typeof viewVersions>;
 
 export const dimension = z.object({
   field: z.string(),
